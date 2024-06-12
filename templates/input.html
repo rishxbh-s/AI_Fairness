@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Input Data</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img src="{{ url_for('static', filename='drdo.png') }}" alt="Logo 1" />
+      <img
+        src="{{ url_for('static', filename='download.jpeg') }}"
+        alt="Logo 2"
+      />
+    </div>
+    <div class="container">
+      <h1>Input Data</h1>
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="privileged_gender">Privileged Gender:</label>
+        <input
+          type="text"
+          id="privileged_gender"
+          name="privileged_gender"
+          required
+        />
+
+        <label for="unprivileged_gender">Unprivileged Gender:</label>
+        <input
+          type="text"
+          id="unprivileged_gender"
+          name="unprivileged_gender"
+          required
+        />
+
+        <label for="metric">Select Metric:</label>
+        <select id="metric" name="metric" required>
+          <option value="classification">Classification</option>
+          <option value="binary_label_dataset">Binary Label Dataset</option>
+          <option value="dataset">Dataset</option>
+          <option value="sample_distortion">Sample Distortion</option>
+          <option value="mdss">MDSS</option>
+        </select>
+
+        <label for="file">Upload Dataset (CSV):</label>
+        <input type="file" id="file" name="file" accept=".csv" required />
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+</html>

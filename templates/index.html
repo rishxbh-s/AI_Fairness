@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>AI Fairness 360</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img src="{{ url_for('static', filename='drdo.png') }}" alt="Logo 1" />
+      <img
+        src="{{ url_for('static', filename='download.jpeg') }}"
+        alt="Logo 2"
+      />
+    </div>
+    </div>
+    <div class="container">
+      <h1>Welcome to AI Fairness 360 (AIF360)</h1>
+      <p>
+        AIF360 is an extensible open-source library containing techniques developed by the research community to help detect and mitigate bias in machine learning models throughout the AI application lifecycle.
+        AIF360 has two interfaces for handling data formats, a legacy interface and a scikit-learn-compatible one. The sklearn API is preferred going forward and all future development will be focused there. Note: there may be slight differences in results between the two versions due to the implementations but both are valid.
+        AIF360 contains four major classes of features: datasets, estimators, metrics, and detectors.
+        Recent years have seen an outpouring of research on fairness and bias in machine learning models. This is not surprising, as fairness is a complex and multi-faceted concept that depends on context and culture. Narayanan described at least 21 mathematical definitions of fairness from the literature (Narayanan, 2018). These are not just theoretical differences in how to measure fairness; different definitions produce entirely different outcomes. For example, ProPublica and Northpointe had a public debate on an important social justice issue (recidivism prediction) that was fundamentally about what is the right fairness metric (Larson et al., 2016; Dieterich et al., 2016; Larson & Angwin, 2016). Furthermore, researchers have shown that it is impossible to satisfy all definitions of fairness at the same time (Kleinberg et al., 2017).
+        Thus, although fairness research is a very active field, clarity on which bias metrics and bias mitigation strategies are best is yet to be achieved. In addition to the multitude of fairness definitions, different bias handling algorithms address different parts of the model life-cycle, and understanding each research contribution, how, when and why to use it is challenging even for experts in algorithmic fairness. As a result, general public, fairness scientific community and AI practitioners need clarity on how to proceed. Currently the burden is on ML and AI developers, as they need to deal with questions such as “Should the data be debiased?”, “Should we create new classifiers that learn unbiased models?”, and “Is it better to correct predictions from the model?” To address these issues we have created AI Fairness 360 (AIF360), an extensible open source toolkit for detecting, understanding, and mitigating algorithmic biases. The goals of AIF360 are to promote a deeper understanding of fairness metrics and mitigation techniques; to enable an open common platform for fairness researchers and industry practitioners to share and benchmark their algorithms; and to help facilitate the transition of fairness research algorithms to use in an industrial setting.        
+      </p>
+      <h2>Algorithms</h2>
+      <p>
+        Bias mitigation algorithms attempt to improve the fairness metrics by modifying the training data, the learning algorithm, or the predictions. These algorithm categories are known as pre-processing, in-processing, and
+        post-processing, respectively.
+        AIF360 currently contains 9 bias mitigation algorithms that span these three categories. All the algorithms are implemented by inheriting from the Transformer class. Transformers are an abstraction for any process that acts on an instance of Dataset class and returns a new, modified Dataset object. This definition encompasses preprocessing, in-processing, and post-processing algorithms.
+      </p>
+      <p>
+        <b>1.Pre-processing algorithms</b>: Reweighing (Kamiran & Calders, 2012) generates weights for the training examples in each (group, label) combination differently to ensure fairness before classification. Optimized preprocessing (Calmon et al., 2017) learns a probabilistic transformation that edits the features and labels in the data with group fairness, individual distortion, and data fidelity constraints and objectives. Learning fair representations (Zemel et al., 2013) finds a latent representation that encodes the data well but obfuscates information about protected attributes. Disparate impact remover (Feldman et al., 2015) edits feature values to increase group fairness while preserving rank-ordering within groups.
+      </p>
+      <p>
+        <b>2.In-processing algorithms:</b> Adversarial debiasing (Zhang et al., 2018) learns a classifier to maximize prediction accuracy and simultaneously reduce an adversarys ability to determine the protected attribute from the predictions. This approach leads to a fair classifier as the predictions cannot carry any group discrimination information that the adversary can exploit. Prejudice remover (Kamishima et al., 2012) adds a discrimination-aware regularization term to the learning objective.
+      </p>
+      <p>
+        <b>3.Post-processing algorithms:</b> Equalized odds postprocessing (Hardt et al., 2016) solves a linear program to find probabilities with which to change output labels to optimize equalized odds. Calibrated equalized odds postprocessing (Pleiss et al., 2017) optimizes over calibrated classifier score outputs to find probabilities with which to change output labels with an equalized odds objective. Reject option classification (Kamiran et al., 2012) gives favorable outcomes to unprivileged groups and unfavorable outcomes to privileged groups in a confidence band around the decision boundary with the highest uncertainty
+      </p>
+      <h2> Fairness Metrics</h2>
+      <p>
+        <b>1. Dataset Metrics:</b>
+        The DatasetMetric class in the AI Fairness 360 (AIF360) library provides a suite of fairness metrics to evaluate datasets for bias and discrimination. The class is designed to work with datasets and helps in identifying and quantifying bias before and after applying fairness algorithms.
+      </p>
+      <p>
+        <b>2.Binary Label Dataset Metric:</b>
+        The BinaryLabelDatasetMetric class in the AI Fairness 360 (AIF360) library is designed to compute fairness metrics specifically for datasets with binary labels. This class helps to evaluate and identify biases in datasets before training machine learning models.
+      </p>
+      <p>
+         <b>3.Classification Metrics:</b>
+         The ClassificationMetric class in the AI Fairness 360 (AIF360) library provides a variety of fairness metrics to evaluate the performance of machine learning models, particularly focusing on fairness across different groups. This class is designed to assess the bias in the predictions of a model with respect to a dataset containing protected attributes.
+      </p>
+      <p>
+        <b>4.Sample Distortion Metrics:</b>
+        The SampleDistortionMetric class in AIF360 is a valuable tool for quantifying the distortion introduced when applying fairness algorithms to datasets. By providing metrics like mean individual distortion and total individual distortion, it helps in understanding the extent of modifications made to achieve fairness, ensuring that the adjustments are reasonable and justifiable.
+      </p>
+      <p>
+        <b>5.MDSS Classification Metrics:</b>
+           The MDSSClassificationMetric class in the AI Fairness 360 (AIF360) library provides metrics for evaluating the fairness of a classification model using the identified subgroups discovered by the Multi-Design Subgroup Discovery (MDSS) algorithm. MDSS is a technique used to identify subgroups within the data that exhibit significant disparities in outcomes, which is useful for uncovering hidden biases in machine learning models.
+      </p>
+      <button onclick="window.location.href='/input'">Next</button>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <img src="{{ url_for('static', filename='drdo.png') }}" alt="Logo 1" />
+      <img
+        src="{{ url_for('static', filename='download.jpeg') }}"
+        alt="Logo 2"
+      />
+    </div>
+    <div class="container">
+      <h1>Result</h1>
+      <h2>Metric: {{ metric }}</h2>
+      <div class="result-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for key, value in result.items() %}
+            <tr>
+              <td>{{ key }}</td>
+              <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <button onclick="window.location.href='/'">Home</button>
+    </div>
+  </body>
+</html>
